@@ -36,6 +36,29 @@
             background-color: #f4f4f6;
             color: #1f1d1a;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Crushed paper texture overlay covering the whole body */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("crushed-paper.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.10;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Subtle dot pattern for main backgrounds */
+        .bg-bg {
+            background-color: #f4f4f6;
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 24px 24px;
         }
 
         /* Fast, subtle reveal without blur or lag */
@@ -58,7 +81,7 @@
 <body class="font-sans antialiased selection:bg-accent selection:text-white">
 
     <!-- HEADER -->
-    <header class="sticky top-0 z-50 w-full bg-bg/95 backdrop-blur-md border-b border-secondary/50 transition-all duration-300">
+    <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-secondary/50 transition-all duration-300">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-24 flex items-center justify-between relative">
             
             <!-- Refined Text Wordmark Logo -->
@@ -94,7 +117,7 @@
         </div>
 
         <!-- Standard Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-bg border-b border-secondary/50 shadow-lg lg:hidden">
+        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-white border-b border-secondary/50 shadow-lg lg:hidden z-40">
             <nav class="flex flex-col px-6 py-6 space-y-6">
                 <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Design Coaching Services</a>
                 <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Portfolio</a>
@@ -106,44 +129,33 @@
     </header>
 
     <main>
-        <!-- HERO SECTION -->
-        <section class="relative w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
-            
-            <!-- Static Portfolio Grid -->
-            <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4 reveal-element">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop" alt="Spacious contemporary living room remodel with natural light" class="col-span-2 w-full aspect-[16/9] object-cover rounded-sm shadow-md" loading="eager" />
-                <img src="https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=800&auto=format&fit=crop" alt="Bespoke kitchen remodel featuring custom island and modern fixtures" class="w-full aspect-square object-cover rounded-sm shadow-md" loading="eager" />
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop" alt="Custom architectural cabinetry and built-in shelving" class="w-full aspect-square object-cover rounded-sm shadow-md" loading="eager" />
+        <!-- FULL BLEED HERO SECTION -->
+        <section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center text-center px-6">
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="Screenshot from 2026-10-08 19-52-50_2.jpg" alt="Interior Design Consult via Laptop" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-primary/70 backdrop-blur-[2px]"></div>
             </div>
 
-            <!-- Hero Content -->
-            <div class="w-full lg:w-1/2 flex flex-col justify-center text-left" id="hero-text-container">
-                <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.15] text-text mb-6">
-                    Virtual Interior Design &<br/>
-                    Home Remodel Coaching
+            <!-- Centered Content -->
+            <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+                <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-white mb-6">
+                    Virtual Interior Design & Home Remodel Coaching
                 </h1>
-                
-                <p class="font-sans text-lg md:text-xl text-text/80 leading-relaxed mb-6 max-w-lg font-light">
+                <p class="font-sans text-lg md:text-xl text-white/90 leading-relaxed mb-10 max-w-2xl font-light">
                     Smart, practical, <em class="font-medium italic">experienced</em> interior design advice that'll save you time, money, and headaches during your home remodel.
                 </p>
-
-                <p class="font-sans text-sm md:text-base text-text/60 mb-10 max-w-lg">
-                    - Based in <strong class="font-semibold text-text/90">Seattle</strong> since 2007 | Zooming in from Paris since 2024 -
+                <a href="#" class="inline-flex items-center justify-center bg-accent text-white font-sans text-sm tracking-[0.2em] uppercase font-semibold px-10 py-5 rounded-sm hover:bg-accentHover transition-all">
+                    Book a Strategy Call
+                </a>
+                <p class="font-sans text-sm md:text-base text-white/70 mt-8 max-w-lg">
+                    - Based in <strong class="font-semibold text-white">Seattle</strong> since 2007 | Zooming in from Paris since 2024 -
                 </p>
-
-                <div>
-                    <a href="#" class="inline-flex items-center justify-center bg-accent text-white font-sans text-sm tracking-[0.2em] uppercase font-semibold px-10 py-5 rounded-sm hover:bg-accentHover hover:shadow-lg transition-all duration-300 group">
-                        Book a Strategy Call
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-3 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-                </div>
             </div>
         </section>
 
         <!-- PRESS & RECOGNITION SECTION -->
-        <section class="py-12 border-b border-secondary/50 reveal-element">
+        <section class="py-12 bg-white border-b border-secondary/50 reveal-element">
             <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale">
                 <span class="font-sans font-bold text-xl tracking-tighter">KING 5</span>
                 <span class="font-serif italic text-2xl">livehappy</span>
@@ -154,10 +166,36 @@
             </div>
         </section>
 
+        <!-- PORTFOLIO GRID PREVIEW SECTION -->
+        <section class="py-24 bg-white border-b border-secondary/50">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="text-center mb-12 reveal-element">
+                     <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-primary mb-4">
+                        Recent Remodels
+                    </h2>
+                    <p class="font-sans text-text/70">Beautiful, practical spaces designed for real life.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-element delay-100">
+                    <!-- Portfolio Image 1: White Kitchen Island -->
+                    <div class="aspect-square overflow-hidden rounded-sm shadow-sm group">
+                        <img src="Screenshot from 2026-10-08 19-51-46.jpg" alt="Bright kitchen remodel with large white island and pendant lighting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                    <!-- Portfolio Image 2: Blue Living Room -->
+                    <div class="aspect-square overflow-hidden rounded-sm shadow-sm group">
+                        <img src="Screenshot from 2026-10-08 19-52-13.jpg" alt="Cozy living room with blue sectional and patterned wallpaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                    <!-- Portfolio Image 3: Bathroom -->
+                    <div class="aspect-square overflow-hidden rounded-sm shadow-sm group">
+                        <img src="Screenshot from 2026-10-08 19-52-33.jpg" alt="Modern bathroom remodel with pink patterned shower curtain" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- PROBLEM / SOLUTION COPY -->
         <section class="py-24 bg-bg">
             <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-                
                 <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-primary mb-10 reveal-element">
                     Planning a home remodel<br/>
                     <span class="italic text-accent">(or stuck in the middle of one)?</span>
@@ -174,31 +212,36 @@
                         After just one call, you'll feel more confident about your design ideas, your remodel plans, and how to work with your contractor—so you can lead your home remodel like a pro.
                     </p>
                 </div>
-
             </div>
         </section>
 
         <!-- TESTIMONIAL SECTION -->
-        <section class="py-20 bg-secondary/20 border-y border-secondary/50">
-            <div class="max-w-5xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-start gap-10 reveal-element">
+        <section class="py-24 bg-white relative overflow-hidden">
+            <!-- Decorative background blob/shape -->
+            <div class="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-[#3b82f6]/10 rounded-full blur-3xl -z-10"></div>
+            
+            <div class="max-w-4xl mx-auto px-6 lg:px-12 bg-secondary/10 p-10 md:p-16 rounded-2xl border border-secondary/30 relative z-10 shadow-sm reveal-element">
                 
-                <div class="text-accent/20 font-serif text-[120px] leading-none select-none -mt-8 hidden md:block">
-                    &ldquo;
-                </div>
+                <div class="flex flex-col md:flex-row items-start gap-8">
+                    <div class="text-accent/20 font-serif text-[100px] leading-none select-none -mt-4 hidden md:block">
+                        &ldquo;
+                    </div>
 
-                <div class="text-left">
-                    <h3 class="font-sans font-bold text-sm tracking-[0.15em] text-primary uppercase mb-6">
-                        "These sessions are jam packed and will exceed your expectations!"
-                    </h3>
-                    <p class="font-serif italic text-2xl text-text/90 leading-relaxed mb-8">
-                        "I did a virtual session for an area of our home and walked away with a clear idea for the room, a confirmation on the look I wanted to create, and links to go and purchase the items for the room. <strong class="text-accent font-medium">It was just what I needed to help me along in the process of moving towards my vision.</strong>"
-                    </p>
-                    
-                    <div class="flex items-center gap-4 border-t border-secondary/60 pt-6">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop" alt="Portrait of Sarah Jenkins" class="w-14 h-14 rounded-full object-cover shadow-sm" loading="lazy">
-                        <div>
-                            <p class="font-sans font-bold text-base text-primary">Sarah Jenkins</p>
-                            <p class="font-sans text-xs text-text/60 uppercase tracking-widest mt-0.5">Kitchen & Living Room Remodel, Seattle</p>
+                    <div class="text-left">
+                        <h3 class="font-sans font-bold text-sm tracking-[0.15em] text-primary uppercase mb-6">
+                            "These sessions are jam packed and will exceed your expectations!"
+                        </h3>
+                        <p class="font-serif italic text-2xl text-text/90 leading-relaxed mb-8">
+                            "I did a virtual session for an area of our home and walked away with a clear idea for the room, a confirmation on the look I wanted to create, and links to go and purchase the items for the room. <strong class="text-accent font-medium">It was just what I needed to help me along in the process of moving towards my vision.</strong>"
+                        </p>
+                        
+                        <div class="flex items-center gap-4 pt-4 border-t border-secondary/60">
+                            <!-- Placeholder portrait kept for the reviewer, as no client portrait was provided in the source files -->
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop" alt="Portrait of Sarah Jenkins" class="w-12 h-12 rounded-full object-cover shadow-sm" loading="lazy">
+                            <div>
+                                <p class="font-sans font-bold text-base text-primary">Sarah Jenkins</p>
+                                <p class="font-sans text-xs text-text/60 uppercase tracking-widest mt-0.5">Kitchen & Living Room Remodel</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,11 +251,11 @@
 
         <!-- ABOUT REBECCA SECTION -->
         <section class="py-24 bg-bg" id="about">
-            <div class="max-w-6xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="max-w-5xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 
                 <div class="relative reveal-element">
-                    <div class="absolute -inset-4 bg-secondary/30 rounded-lg -z-10 transform translate-x-4 translate-y-4"></div>
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Rebecca - Designer and Coach working on plans" class="w-full h-auto object-cover rounded shadow-lg aspect-[4/5]" loading="lazy">
+                    <div class="absolute -inset-3 bg-white rounded-lg -z-10 transform translate-x-3 translate-y-3 border border-secondary/50"></div>
+                    <img src="Screenshot from 2026-10-08 19-51-41.jpg" alt="Rebecca West - Seriously Happy Homes" class="w-full h-auto object-cover rounded shadow-md aspect-square" loading="lazy">
                 </div>
 
                 <div class="reveal-element delay-100">
@@ -220,7 +263,7 @@
                         Hi! I'm Rebecca—designer, design psychology coach, and author of the design psychology book <a href="#" class="text-accent underline decoration-1 underline-offset-4 hover:text-accentHover transition-colors">Happy Starts At Home.</a>
                     </h2>
 
-                    <div class="space-y-5 font-sans text-lg text-text/80 leading-relaxed font-light mb-8">
+                    <div class="space-y-4 font-sans text-lg text-text/80 leading-relaxed font-light mb-8">
                         <p>
                             <strong class="font-medium text-text">I'm very good at helping people make smart, regret-free remodeling decisions</strong> for single-family residential remodels in homes that are 3000 square feet and under. During more than 15 years in business, my team and I helped 1000's of people design and remodel colorful, easy-care kitchens, baths, basements, & more!
                         </p>
