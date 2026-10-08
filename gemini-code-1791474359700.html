@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seriously Happy Homes | Seattle, WA</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        text: '#1f1d1a',
+                        bg: '#f4f4f6',
+                        primary: '#2e3b4e',
+                        secondary: '#e5e7ea',
+                        accent: '#9e3a26',
+                        accentHover: '#7a2b1c'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f4f4f6;
+            color: #1f1d1a;
+            overflow-x: hidden;
+        }
+
+        /* Fast, subtle reveal without blur or lag */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .is-visible.reveal-element, .is-visible .reveal-element {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-accent selection:text-white">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 w-full bg-bg/95 backdrop-blur-md border-b border-secondary/50 transition-all duration-300">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-24 flex items-center justify-between relative">
+            
+            <!-- Refined Text Wordmark Logo -->
+            <a href="#" class="flex-shrink-0 z-20 flex flex-col justify-center">
+                <span class="font-serif text-2xl md:text-3xl font-medium tracking-wide text-primary leading-none uppercase">
+                    Seriously
+                </span>
+                <span class="font-serif text-2xl md:text-3xl font-medium tracking-wide text-primary leading-none uppercase mt-1">
+                    Happy Homes
+                </span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex flex-grow justify-end pr-4 xl:pr-8">
+                <nav class="flex items-center space-x-8 xl:space-x-10">
+                    <a href="#" class="text-xs uppercase tracking-widest font-semibold text-text/80 hover:text-accent transition-colors duration-200">Design Coaching Services</a>
+                    <a href="#" class="text-xs uppercase tracking-widest font-semibold text-text/80 hover:text-accent transition-colors duration-200">Portfolio</a>
+                    <a href="#" class="text-xs uppercase tracking-widest font-semibold text-text/80 hover:text-accent transition-colors duration-200 flex items-center gap-1 group">
+                        Book, Blog, & More 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-text/60 group-hover:text-accent transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </a>
+                    <a href="#" class="text-xs uppercase tracking-widest font-semibold text-text/80 hover:text-accent transition-colors duration-200">Business Coaching</a>
+                    <a href="tel:+12064654825" class="inline-flex items-center justify-center bg-primary text-white font-sans text-xs tracking-widest uppercase font-medium px-6 py-3 rounded-sm hover:bg-accent transition-all duration-300 ml-2 shadow-sm">206.465.4825</a>
+                </nav>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuToggle" class="lg:hidden z-20 p-2 text-primary focus:outline-none" aria-label="Toggle Navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path id="menuIcon" stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Standard Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-bg border-b border-secondary/50 shadow-lg lg:hidden">
+            <nav class="flex flex-col px-6 py-6 space-y-6">
+                <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Design Coaching Services</a>
+                <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Portfolio</a>
+                <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Book, Blog, & More</a>
+                <a href="#" class="text-sm uppercase tracking-widest font-bold text-text hover:text-accent transition-colors">Business Coaching</a>
+                <a href="tel:+12064654825" class="text-sm uppercase tracking-widest font-bold text-accent">Call Us: 206.465.4825</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="relative w-full max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
+            
+            <!-- Static Portfolio Grid -->
+            <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4 reveal-element">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop" alt="Spacious contemporary living room remodel with natural light" class="col-span-2 w-full aspect-[16/9] object-cover rounded-sm shadow-md" loading="eager" />
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=800&auto=format&fit=crop" alt="Bespoke kitchen remodel featuring custom island and modern fixtures" class="w-full aspect-square object-cover rounded-sm shadow-md" loading="eager" />
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop" alt="Custom architectural cabinetry and built-in shelving" class="w-full aspect-square object-cover rounded-sm shadow-md" loading="eager" />
+            </div>
+
+            <!-- Hero Content -->
+            <div class="w-full lg:w-1/2 flex flex-col justify-center text-left" id="hero-text-container">
+                <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.15] text-text mb-6">
+                    Virtual Interior Design &<br/>
+                    Home Remodel Coaching
+                </h1>
+                
+                <p class="font-sans text-lg md:text-xl text-text/80 leading-relaxed mb-6 max-w-lg font-light">
+                    Smart, practical, <em class="font-medium italic">experienced</em> interior design advice that'll save you time, money, and headaches during your home remodel.
+                </p>
+
+                <p class="font-sans text-sm md:text-base text-text/60 mb-10 max-w-lg">
+                    - Based in <strong class="font-semibold text-text/90">Seattle</strong> since 2007 | Zooming in from Paris since 2024 -
+                </p>
+
+                <div>
+                    <a href="#" class="inline-flex items-center justify-center bg-accent text-white font-sans text-sm tracking-[0.2em] uppercase font-semibold px-10 py-5 rounded-sm hover:bg-accentHover hover:shadow-lg transition-all duration-300 group">
+                        Book a Strategy Call
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-3 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESS & RECOGNITION SECTION -->
+        <section class="py-12 border-b border-secondary/50 reveal-element">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale">
+                <span class="font-sans font-bold text-xl tracking-tighter">KING 5</span>
+                <span class="font-serif italic text-2xl">livehappy</span>
+                <span class="font-serif font-bold text-xl uppercase tracking-widest text-center">The Sunday<br/>Times</span>
+                <span class="font-serif italic text-2xl">The Seattle Times</span>
+                <span class="font-sans font-bold text-lg tracking-[0.2em] uppercase">Real Simple</span>
+                <span class="font-serif font-bold text-lg leading-none text-center">WALL STREET<br/>JOURNAL</span>
+            </div>
+        </section>
+
+        <!-- PROBLEM / SOLUTION COPY -->
+        <section class="py-24 bg-bg">
+            <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+                
+                <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-primary mb-10 reveal-element">
+                    Planning a home remodel<br/>
+                    <span class="italic text-accent">(or stuck in the middle of one)?</span>
+                </h2>
+                
+                <div class="space-y-6 font-sans text-lg text-text/80 leading-relaxed font-light reveal-element delay-100">
+                    <p>
+                        Not feeling confident about your layout or lighting plan? Not sure what to expect from your kitchen or bath remodel? Wondering how to tell your contractor that yes, they <em>do</em> need to move that thermostat to where you asked for it in the first place? (True story. 🙄)
+                    </p>
+                    <p>
+                        <strong>This is where a Zoom call with a seasoned expert can save your sanity!</strong> Whether you're second-guessing your design ideas, stuck between conflicting advice from your designer, architect, contractor, and well-meaning neighbor, or need help planning your kitchen, bathroom, or basement layout—I've helped thousands of clients cut through the chaos and make smart, informed decisions.
+                    </p>
+                    <p class="font-medium text-text mt-8 text-xl">
+                        After just one call, you'll feel more confident about your design ideas, your remodel plans, and how to work with your contractor—so you can lead your home remodel like a pro.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL SECTION -->
+        <section class="py-20 bg-secondary/20 border-y border-secondary/50">
+            <div class="max-w-5xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-start gap-10 reveal-element">
+                
+                <div class="text-accent/20 font-serif text-[120px] leading-none select-none -mt-8 hidden md:block">
+                    &ldquo;
+                </div>
+
+                <div class="text-left">
+                    <h3 class="font-sans font-bold text-sm tracking-[0.15em] text-primary uppercase mb-6">
+                        "These sessions are jam packed and will exceed your expectations!"
+                    </h3>
+                    <p class="font-serif italic text-2xl text-text/90 leading-relaxed mb-8">
+                        "I did a virtual session for an area of our home and walked away with a clear idea for the room, a confirmation on the look I wanted to create, and links to go and purchase the items for the room. <strong class="text-accent font-medium">It was just what I needed to help me along in the process of moving towards my vision.</strong>"
+                    </p>
+                    
+                    <div class="flex items-center gap-4 border-t border-secondary/60 pt-6">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop" alt="Portrait of Sarah Jenkins" class="w-14 h-14 rounded-full object-cover shadow-sm" loading="lazy">
+                        <div>
+                            <p class="font-sans font-bold text-base text-primary">Sarah Jenkins</p>
+                            <p class="font-sans text-xs text-text/60 uppercase tracking-widest mt-0.5">Kitchen & Living Room Remodel, Seattle</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT REBECCA SECTION -->
+        <section class="py-24 bg-bg" id="about">
+            <div class="max-w-6xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="relative reveal-element">
+                    <div class="absolute -inset-4 bg-secondary/30 rounded-lg -z-10 transform translate-x-4 translate-y-4"></div>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Rebecca - Designer and Coach working on plans" class="w-full h-auto object-cover rounded shadow-lg aspect-[4/5]" loading="lazy">
+                </div>
+
+                <div class="reveal-element delay-100">
+                    <h2 class="font-serif text-3xl md:text-4xl text-primary mb-6 leading-tight">
+                        Hi! I'm Rebecca—designer, design psychology coach, and author of the design psychology book <a href="#" class="text-accent underline decoration-1 underline-offset-4 hover:text-accentHover transition-colors">Happy Starts At Home.</a>
+                    </h2>
+
+                    <div class="space-y-5 font-sans text-lg text-text/80 leading-relaxed font-light mb-8">
+                        <p>
+                            <strong class="font-medium text-text">I'm very good at helping people make smart, regret-free remodeling decisions</strong> for single-family residential remodels in homes that are 3000 square feet and under. During more than 15 years in business, my team and I helped 1000's of people design and remodel colorful, easy-care kitchens, baths, basements, & more!
+                        </p>
+                        <p>
+                            In 2023 I closed my Seattle design studio to move to Paris (yep! the one in France! 😊), but you can still get my interior design guidance via Zoom consultations. Diving into a kitchen remodel? Updating your bathroom? Embarking on a full-home renovation? Whether you're worried about getting it wrong or just want a second opinion on your contractor's ideas or architect's plans, <strong>I'm here to help you make confident, regret-free interior design decisions!</strong>
+                        </p>
+                    </div>
+
+                    <p class="font-sans text-base text-text/70 mb-8">
+                        <a href="#" class="text-accent font-semibold hover:underline decoration-2 underline-offset-4">Click here</a> to schedule or learn more about what Virtual Design Coaching Sessions are (& aren't) good for.
+                    </p>
+
+                    <p class="font-serif text-2xl text-primary italic">
+                        I look forward to working with you! 💛 Rebecca
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LEAD MAGNET / CTA SECTION -->
+        <section class="relative py-24 text-white border-t-8 border-accent bg-primary overflow-hidden">
+            
+            <!-- Blob Background Integration -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
+                <img src="blob-scene-haikei.svg" alt="Background pattern" class="w-full h-full object-cover opacity-90" aria-hidden="true" loading="lazy" />
+            </div>
+
+            <!-- Content Container -->
+            <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <div class="flex justify-center md:justify-end reveal-element">
+                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop" alt="10 Practical Tips for Making Your Home Happier Now Guide on a tablet" class="w-full max-w-[320px] rounded shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500" loading="lazy">
+                </div>
+
+                <div class="reveal-element delay-100 bg-primary/40 backdrop-blur-sm p-8 rounded-lg shadow-xl border border-white/10">
+                    <h3 class="font-sans text-lg tracking-widest uppercase text-white/90 mb-2">Eager to get happy at home right now?</h3>
+                    <h2 class="font-serif text-4xl md:text-5xl font-medium mb-8">Get 10 tips for a happier home!</h2>
+                    
+                    <form class="flex flex-col gap-5 max-w-md" onsubmit="event.preventDefault();">
+                        <div class="flex flex-col gap-1.5">
+                            <label for="firstName" class="text-xs font-sans tracking-widest uppercase text-white font-medium">First Name</label>
+                            <input id="firstName" type="text" required class="w-full px-5 py-4 bg-white text-text font-sans rounded-sm border-none focus:ring-2 focus:ring-accent outline-none">
+                        </div>
+                        
+                        <div class="flex flex-col gap-1.5">
+                            <label for="emailAddress" class="text-xs font-sans tracking-widest uppercase text-white font-medium">Email Address</label>
+                            <input id="emailAddress" type="email" required class="w-full px-5 py-4 bg-white text-text font-sans rounded-sm border-none focus:ring-2 focus:ring-accent outline-none">
+                        </div>
+                        
+                        <button type="submit" class="w-full mt-4 bg-accent hover:bg-accentHover text-white font-sans font-bold uppercase tracking-[0.2em] text-sm py-5 rounded-sm transition-colors duration-300 shadow-md">
+                            Get the Guide
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- MINI FOOTER -->
+    <footer class="py-8 bg-white border-t border-secondary">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="font-sans text-xs uppercase tracking-widest text-text/50">
+                MAILING ADDRESS: 10002 AURORA AVE N, SUITE 36-513, SEATTLE WA 98133 | <a href="mailto:HELLO@SERIOUSLYHAPPYHOMES.COM" class="hover:text-accent transition-colors">HELLO@SERIOUSLYHAPPYHOMES.COM</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            menuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
+                }
+            });
+
+            // Fast Intersection Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.05
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            const animatedElements = document.querySelectorAll('.reveal-element');
+            
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
